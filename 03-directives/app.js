@@ -34,12 +34,26 @@
         {
             fname: 'juan',
             lname: 'lamadrid',
-            uname: 'jlamadrid'
+            uname: 'alamadrid',
+            image: './images/user-male-icon.png'
         },
         {
             fname: 'john',
             lname: 'deer',
-            uname: 'jdeer'
+            uname: 'bdeer',
+            image: './images/user-maleb-icon.png'
+        },
+        {
+            fname: 'jane',
+            lname: 'Handy',
+            uname: 'chandy',
+            image: './images/user-female-icon.png'
+        },
+        {
+            fname: 'Dwight',
+            lname: 'Gooden',
+            uname: 'dgooden',
+            image: './images/user-maleb-icon.png'
         }
     ]
 })();

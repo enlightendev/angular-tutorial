@@ -1,0 +1,34 @@
+<!doctype html>
+<html ng-app="store">
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+<body class="container" ng-controller="StoreController as store">
+
+
+<table class="table table-condensed">
+    <th>
+        <tr>
+            <td>fname</td>
+            <td>lname</td>
+            <td>uname</td>
+            <td>image</td>
+        </tr>
+    </th>
+    <tr ng-repeat="user in store.userList">
+        <td>{{user.fname}}</td>
+        <td>{{user.lname}}</td>
+        <td>{{user.uname}}</td>
+
+        <!-- use ng-src to display images otherwise page will try to load image before expression is evaluated. -->
+        <td>
+            <img class="small-image pull-left thumbnail" ng-src="{{user.image}}"/>
+        </td>
+    </tr>
+</table>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.10/angular.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+</body>
+</html>
