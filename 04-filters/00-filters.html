@@ -1,0 +1,55 @@
+<!doctype html>
+<html ng-app="store">
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+<body class="container" ng-controller="StoreController as store">
+
+<div ng-hide="store.product.soldOut">
+    <h1>{{store.product.name}}</h1>
+
+    <!-- FILTER format => {{data | filter:options}}-->
+
+    <!-- currency Filter -->
+    <em class="pull-right">{{store.product.price | currency}}</em>
+
+    <!-- limitTo filter -->
+    <p>{{store.product.description | limitTo:20 }} ...</p>
+
+    <!-- chaining filters -->
+    <p>{{store.product.description | limitTo:20 | uppercase}} ...</p>
+
+    <!-- e.g. date FILTER  => {{data | date:'MM/dd/yyyy'}}-->
+    <p>{{store.product.date | date:'MM/dd/yyyy'}}</p>
+    <button ng-show="store.product.canPurchase">Add to cart</button>
+</div>
+
+<p>{{store.userList.length}}</p>
+
+
+<table class="table table-condensed">
+    <th>
+        <tr>
+            <td>fname</td>
+            <td>lname</td>
+            <td>uname</td>
+        </tr>
+    </th>
+
+    <!--
+    limitTo filter in context of ng-repeat to limit number of items to display
+    in addition to chaining and using orderBy to sort by user name
+    NOTE "-uname" = descending and simply "uname" = ascending
+    -->
+    <tr ng-repeat="user in store.userList | limitTo:3 | orderBy:'-uname'">
+        <td>{{user.fname}}</td>
+        <td>{{user.lname}}</td>
+        <td>{{user.uname}}</td>
+    </tr>
+</table>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.10/angular.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+</body>
+</html>
