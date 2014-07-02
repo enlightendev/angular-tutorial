@@ -1,0 +1,34 @@
+<!doctype html>
+<html ng-app="store">
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+<body class="container" ng-controller="StoreController as store">
+
+<div ng-hide="store.product.soldOut" >
+    <h1>{{store.product.name}}</h1>
+    <em class="pull-right">${{store.product.price}}</em>
+    <p>{{store.product.description}}</p>
+    <button ng-show="store.product.canPurchase">Add to cart</button>
+</div>
+
+<table class="table table-condensed">
+    <th>
+        <tr>
+            <td>fname</td>
+            <td>lname</td>
+            <td>uname</td>
+        </tr>
+    </th>
+    <tr ng-repeat="user in store.userList">
+        <td>{{user.fname}}</td>
+        <td>{{user.lname}}</td>
+        <td>{{user.uname}}</td>
+    </tr>
+</table>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.10/angular.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+</body>
+</html>
