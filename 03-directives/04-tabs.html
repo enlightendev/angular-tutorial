@@ -1,0 +1,56 @@
+<!doctype html>
+<html ng-app="store">
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+<body class="container">
+
+    <p>
+        Here we demonstrate how easy it is to use bootstrap tabs with several angular expressions and directives.
+        Specifically how to use expressions within ng-click and ng-show to show the appropriate tab; how to use ng-init
+        to initialize a variable and read that variable inside an expression inside the ng-click and ng-show directives;
+        and how to use ng-class.
+
+        NOTE: cramming logic into html is bad - some of the logic included in this page should be in a controller - see v2
+    </p>
+
+    <!-- ng-init allows you to eval an expression in the current scope. -->
+    <section ng-init="tab = 1">
+        <ul class="nav nav-pills">
+
+            <!-- ng-class takes a bunch of arguments but we send in an object. If true set class to "active"-->
+            <li ng-class="{ active:tab === 1 }">
+
+                <!-- expression inside ng-click creates a variable and 2 way data binding -->
+                <a href ng-click="tab = 1">Description</a>
+            </li>
+            <li ng-class="{ active:tab === 2 }">
+                <a href ng-click="tab = 2">Specifications</a>
+            </li>
+            <li ng-class="{ active:tab === 3 }">
+                <a href ng-click="tab = 3">Reviews</a>
+            </li>
+        </ul>
+
+        <!-- that can be observed and elsewhere and output using an expression -->
+        {{tab}}
+
+        <div class="panel" ng-show="tab === 1">
+            <h4>Description</h4>
+            <p>{{product.description}}</p>
+        </div>
+        <div class="panel" ng-show="tab === 2">
+            <h4>Specifications</h4>
+            <blockquote>None yet</blockquote>
+        </div>
+        <div class="panel" ng-show="tab === 3">
+            <h4>Reviews</h4>
+            <blockquote>None yet</blockquote>
+        </div>
+    </section>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.10/angular.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+</body>
+</html>

@@ -22,10 +22,33 @@
         this.userList = users;
     });
 
+    app.controller("PanelController", function(){
+        /**
+         *
+         * @type {{name: string, price: number, description: string}}
+         */
+        this.product = gem;
+
+        this.tab = 1;
+
+        /**
+         *
+         * @param setTab
+         */
+        this.selectTab = function(setTab){
+            this.tab = setTab;
+        }
+
+        this.isSelected = function(checkTab){
+            return this.tab === checkTab;
+        }
+
+    });
+
     var gem = {
         name: 'Juan Gem',
         price: 2.45,
-        description: '. . .',
+        description: 'this is the product description.',
         canPurchase: true,
         soldOut: false
     }
