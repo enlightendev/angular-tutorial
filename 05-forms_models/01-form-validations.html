@@ -1,0 +1,67 @@
+<!doctype html>
+<html ng-app="store">
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <style>
+        .ng-invalid.ng-dirty {
+            border-color: #FA787E;
+        }
+        .ng-valid.ng-dirty {
+            border-color: #78FA89;
+        }
+    </style>
+</head>
+<body class="container">
+
+    <p>
+        Here we show form validation:<br/>
+        make sure required fields are filled in, correct email string, etc.<br/>
+        Using angular provided form attributes $valid and $invalid to determine form state and allow submit.
+    </p>
+
+    <!-- here we add novalidate to prevent standard browser validation. -->
+    <form class="form-horizontal" role="form" name="reviewForm" novalidate>
+
+        <blockquote>
+            <b>Stars: {{review.stars}}</b>
+            {{review.body}} <br/>
+            <cite>by: {{review.author}}</cite><br/>
+            Agree?: {{review.terms}}
+        </blockquote>
+
+        <div class="form-group">
+            <label>Rating:</label>
+            <select ng-model="review.stars">
+                <option value="1">1 star</option>
+                <option value="2">2 star</option>
+            </select>
+        </div>
+
+        <!-- we add some required attributes to form fields. -->
+        <div class="form-group">
+            <label>Description:</label>
+            <textarea ng-model="review.body" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>by:</label>
+            <input type="email" ng-model="review.author" required/>
+        </div>
+
+        <div class="form-group">
+            <input ng-model="review.terms" type="checkbox" ng-true-value="Yes" ng-false-value="No"/> I agree to the terms
+        </div>
+
+        <!-- some debugging code to see if form is valid.
+            $valid = built in property from angular.
+        -->
+        <div>form is {{reviewForm.$valid}}</div>
+        <button type="submit" class="btn btn-default" ng-disabled="reviewForm.$invalid" >Submit</button>
+    </form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.10/angular.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+</body>
+</html>
