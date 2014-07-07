@@ -7,9 +7,9 @@
 <body>
 
 <div ng-controller="StoreController as store">
-    <h1>{{store.product.name}}</h1>
-    <h2>${{store.product.price}}</h2>
-    <p>{{store.product.description}}</p>
+    <h1>{{store.products[0].name}}</h1>
+    <h2>${{store.products[0].price}}</h2>
+    <p>{{store.products[0].description}}</p>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.10/angular.min.js"></script>
