@@ -22,7 +22,8 @@
     </p>
 
     <!-- here we add novalidate to prevent standard browser validation. -->
-    <form class="form-horizontal" role="form" name="reviewForm" novalidate>
+    <form class="form-horizontal" role="form" name="reviewForm" novalidate
+          ng-submit="reviewForm.$valid">
 
         <blockquote>
             <b>Stars: {{review.stars}}</b>
