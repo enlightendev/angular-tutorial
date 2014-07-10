@@ -1,0 +1,140 @@
+<!doctype html>
+<html ng-app="todoApp">
+<head>
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <script src="../assets/js/angular.js"></script>
+
+    <script>
+
+        (function(){
+
+            /**
+             * Model to use when not getting data from json
+             * @type {{user: string, items: {action: string, done: boolean}[]}}
+             */
+            var model = {
+                user: "Juan",
+                items: [
+                    { action: "Buy Flowers", done: false },
+                    { action: "Get Shoes", done: false },
+                    { action: "Collect Tickets", done: true },
+                    { action: "Call Joe", done: false }
+                ]
+            };
+
+            var todoApp = angular.module("todoApp", []);
+
+            todoApp.filter("checkedItems", function () {
+                return function (items, showComplete) {
+                    var resultArr = [];
+                    angular.forEach(items, function (item) {
+                        if (item.done == false || showComplete == true) {
+                            resultArr.push(item);
+                        }
+                    });
+                    return resultArr;
+                }
+            });
+
+            todoApp.controller("ToDoCtrl", function () {
+
+                this.todo = model;
+
+                this.incompleteCount = function () {
+                    var count = 0;
+                    angular.forEach(this.todo.items, function (item) {
+                        if (!item.done) { count++ }
+                    });
+                    return count;
+                }
+
+                this.warningLevel = function () {
+                    return this.incompleteCount() < 3 ? "label-success" : "label-warning";
+                }
+
+                this.addNewItem = function (actionText) {
+                   this.todo.items.push({ action: actionText, done: false });
+                }
+
+            });
+
+            /**
+             * this will create a directive referenced as <todo-header></todo-header>
+             *
+             */
+            todoApp.directive('todoHeader', function(){
+                /**
+                 * we return a directive definition object - a configuration object
+                 * defining how the directive works
+                 */
+               return {
+                   restrict: 'E',                       //the type of directive (E for element)
+                   templateUrl: '01__header-element-directive.html'   //URL of a template
+               };
+
+            });
+        })();
+
+    </script>
+
+</head>
+<body class="container" ng-controller="ToDoCtrl as todoCntrl">
+
+    <div>
+        <p>This example is taken from 00-basics/02-mvc. It is altered to use a custom directive.
+            Directives allow you to write HTML that expresses behavior of your application.
+        </p>
+        <p><b>Types of directives:</b></p>
+        <ul>
+            <li>Template-expanding:
+                define a custom tag or attribute that is expanded or replaced.<br/>
+                Can include controller logic. <br/>
+                Simplest.
+            </li>
+            <li>Directives can also be used for: <br/>
+                Expressing complex UI (e.g. this example)<br/>
+                Calling events and registering event handlers.<br/>
+                Reusing common components.
+            </li>
+        </ul>
+        <p>
+            <b>Attribute vs Element Directives:</b> <br/>
+            &lt;h3 product-title&gt;&lt;/h3&gt; vs &lt;todo-header&gt;&lt;/todo-header&gt; <br/>
+            <i>Use element directives for UI widgets and attribute directives for mixin behaviors, e.g. tooltip</i>
+        </p>
+    </div>
+
+    <!-- Our custom directive -->
+    <todo-header></todo-header>
+
+    <div class="panel">
+        <div class="input-group">
+            <input class="form-control" ng-model="actionText" />
+            <span class="input-group-btn">
+                <button class="btn btn-default"
+                        ng-click="todoCntrl.addNewItem(actionText)">Add</button>
+            </span>
+        </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Description</th>
+                <th>Done</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in todoCntrl.todo.items | orderBy:'action' | checkedItems:todoCntrl.showComplete">
+                    <td>{{item.action}}</td>
+
+                    <!-- 2 way data binding -->
+                    <td><input type="checkbox" ng-model="item.done" /></td>
+                    <td>{{item.done}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="checkbox-inline">
+            <label><input type="checkbox" ng_model="todoCntrl.showComplete"> Show Complete</label>
+        </div>
+    </div>
+</body>
+</html>

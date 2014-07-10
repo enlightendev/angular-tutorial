@@ -1,0 +1,11 @@
+<div class="page-header">
+    <h1>
+        (element directive w/ controller) -> {{headerCtrl.myname}}'s To Do List
+            <span class="label label-default"
+                  ng-hide="todoCntrl.incompleteCount() == 0"
+                  ng-class="todoCntrl.warningLevel()">
+
+                {{todoCntrl.incompleteCount()}}
+            </span>
+    </h1>
+</div>

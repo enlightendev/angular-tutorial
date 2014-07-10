@@ -1,0 +1,8 @@
+
+{{todoCntrl.todo.user}}'s To Do List (custom attribute directive)
+<span class="label label-default"
+      ng-hide="todoCntrl.incompleteCount() == 0"
+      ng-class="todoCntrl.warningLevel()">
+
+                {{todoCntrl.incompleteCount()}}
+            </span>
