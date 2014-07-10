@@ -1,0 +1,18 @@
+[
+    {
+        "action": "Buy music",
+        "done": false
+    },
+    {
+        "action": "Get Guitar",
+        "done": false
+    },
+    {
+        "action": "Buy Tickets",
+        "done": true
+    },
+    {
+        "action": "Call Friends",
+        "done": false
+    }
+]

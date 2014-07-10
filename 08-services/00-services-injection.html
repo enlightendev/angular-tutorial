@@ -1,0 +1,126 @@
+<!doctype html>
+<html ng-app="todoApp">
+<head>
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <script src="../assets/js/angular.js"></script>
+
+    <script>
+
+        (function(){
+
+            var model = {
+                user: 'Juan'
+            }
+
+            var todoApp = angular.module("todoApp", []);
+
+            todoApp.filter("checkedItems", function () {
+                return function (items, showComplete) {
+                    var resultArr = [];
+                    angular.forEach(items, function (item) {
+                        if (item.done == false || showComplete == true) {
+                            resultArr.push(item);
+                        }
+                    });
+                    return resultArr;
+                }
+            });
+
+            /**
+             * here we inject the $http service to specify what services this controller needs.
+             */
+            todoApp.controller("ToDoCtrl", [ '$http',  function ($http) {
+
+                //if we needed other services
+                //todoApp.controller("ToDoCtrl", [ '$http', '$log', function ($http, $log) {
+
+                this.todo = model;
+
+                $http.get("../assets/data/items.json").success(function (data) {
+                    model.items = data;
+                });
+
+                this.incompleteCount = function () {
+                    var count = 0;
+                    angular.forEach(this.todo.items, function (item) {
+                        if (!item.done) { count++ }
+                    });
+                    return count;
+                }
+
+                this.warningLevel = function () {
+                    return this.incompleteCount() < 3 ? "label-success" : "label-warning";
+                }
+
+                this.addNewItem = function (actionText) {
+                    this.todo.items.push({ action: actionText, done: false });
+                }
+
+
+            }]);
+        })();
+
+    </script>
+
+</head>
+<body class="container" ng-controller="ToDoCtrl as todoCntrl">
+
+    <div>
+        <p>Services give your controller additional functionality like:</p>
+        <ul>
+            <li>Fetching JSON data from a web service with $http</li>
+            <li>Logging to the javascript console with $log. </li>
+            <li>Filtering an array with $filter. </li>
+        </ul>
+        <p>
+            <b>All built in services start with "$". </b> <br/>
+            $http service can be used to get json from server, e.g. <br/>
+            <i>$http({ method: 'GET', url: '/products.json' });</i>
+            or shortcut method = <i>$http.get('/products.json', {apiKey: 'my-api-key'}); </i>i>
+        </p>
+        <p>https://docs.angularjs.org/guide/services</p>
+    </div>
+
+    <div class="page-header">
+        <h1>
+            {{todoCntrl.todo.user}}'s To Do List
+            <span class="label label-default"
+                  ng-hide="todoCntrl.incompleteCount() == 0"
+                  ng-class="todoCntrl.warningLevel()">
+
+                {{todoCntrl.incompleteCount()}}
+            </span>
+        </h1>
+    </div>
+
+    <div class="panel">
+        <div class="input-group">
+            <input class="form-control" ng-model="actionText" />
+            <span class="input-group-btn">
+                <button class="btn btn-default"
+                        ng-click="todoCntrl.addNewItem(actionText)">Add</button>
+            </span>
+        </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Description</th>
+                <th>Done</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in todoCntrl.todo.items | orderBy:'action' | checkedItems:todoCntrl.showComplete">
+                    <td>{{item.action}}</td>
+
+                    <!-- 2 way data binding -->
+                    <td><input type="checkbox" ng-model="item.done" /></td>
+                    <td>{{item.done}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="checkbox-inline">
+            <label><input type="checkbox" ng_model="todoCntrl.showComplete"> Show Complete</label>
+        </div>
+    </div>
+</body>
+</html>
