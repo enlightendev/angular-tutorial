@@ -8,20 +8,20 @@
  *
  * Main module of the application.
  */
-angular
-  .module('angNewsApp', [
+var app = angular.module('angNewsApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
     'ngRoute',
     'ngSanitize',
     'ngTouch'
-  ])
-  .config(function ($routeProvider) {
+  ]);
+
+  app.config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        templateUrl: 'views/posts.html',
+        controller: 'PostsCtrl'
       })
       .when('/about', {
         templateUrl: 'views/about.html',
