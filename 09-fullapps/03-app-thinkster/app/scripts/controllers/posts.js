@@ -7,7 +7,7 @@
  * # AboutCtrl
  * Controller of the angNewsApp
  */
-app.controller('PostsCtrl', function ($scope, Post) {
+app.controller('PostsCtrl', function ($scope, $location, Post) {
 
     /**
      * bound to form: e.g. <input type="text" ng-model="post.url" />
@@ -27,8 +27,8 @@ app.controller('PostsCtrl', function ($scope, Post) {
      */
     $scope.submitPost = function(){
         //add post
-        Post.create($scope.post).then(function () {
-            $scope.post = {url: 'http://', 'title': ''};
+        Post.create($scope.post).then(function (ref) {
+            $location.path('/posts/' + ref.name());
         });
     }
 

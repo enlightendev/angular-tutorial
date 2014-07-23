@@ -28,6 +28,10 @@ var app = angular.module('angNewsApp', [
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
+      .when('/posts/:postId', {
+        templateUrl: 'views/showpost.html',
+        controller: 'PostViewCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
