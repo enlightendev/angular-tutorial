@@ -10,4 +10,8 @@ app.controller('NavCtrl', function ($scope, $location, Post) {
         });
     };
 
+    $scope.logout = function () {
+        Auth.logout();
+    };
+
 });
