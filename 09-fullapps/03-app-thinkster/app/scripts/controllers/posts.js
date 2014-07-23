@@ -7,7 +7,7 @@
  * # AboutCtrl
  * Controller of the angNewsApp
  */
-app.controller('PostsCtrl', function ($scope) {
+app.controller('PostsCtrl', function ($scope, Post) {
 
     /**
      * bound to form: e.g. <input type="text" ng-model="post.url" />
@@ -20,21 +20,20 @@ app.controller('PostsCtrl', function ($scope) {
      * array of post obbjects
      * @type {Array}
      */
-    $scope.posts = [];
+    $scope.posts = Post.all;
 
     /**
      * function called by form submit
      */
     $scope.submitPost = function(){
         //add post
-        $scope.posts.push($scope.post);
-
-        //reset post
-        $scope.post = {url: 'http://', title: ''};
+        Post.create($scope.post).then(function () {
+            $scope.post = {url: 'http://', 'title': ''};
+        });
     }
 
-    $scope.deletePost = function(index){
-        $scope.posts.splice(index,1);
-    }
+    $scope.deletePost = function (postId) {
+        Post.delete(postId);
+    };
 
 });

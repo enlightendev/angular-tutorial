@@ -14,7 +14,8 @@ var app = angular.module('angNewsApp', [
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'firebase'
   ]);
 
   app.config(function ($routeProvider) {
@@ -31,3 +32,5 @@ var app = angular.module('angNewsApp', [
         redirectTo: '/'
       });
   });
+
+    app.constant('FIREBASE_URL', 'https://brilliant-fire-8550.firebaseio.com/');
