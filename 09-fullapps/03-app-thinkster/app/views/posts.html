@@ -1,24 +1,25 @@
-<!--
-    ng-repeat has a variable named '$index' that holds the index
-    of the current object in the data set.
--->
+<div class="container posts-page">
 
-<div ng-repeat="(postId, post) in posts">
-    <a href="{{ post.url }}">{{ post.title }}</a>
-    <a href="#/posts/{{ postId }}">comments</a>
-    <a ng-click="deletePost(postId)">delete</a>
+    <div class="post row" ng-repeat="(postId, post) in posts">
+        <div class="col-xs-1">
+
+        </div>
+        <div class="col-md-9 col-xs-11">
+
+            <div class="info">
+                <a href="{{ post.url }}">
+                    {{ post.title }}
+                </a>
+            </div>
+            <div>
+                <a href="#/posts/{{ postId }}">comments</a>
+                <a ng-click="deletePost(postId)">delete</a>
+            </div>
+        </div>
+        <div class="col-md-2">
+
+        </div>
+
+    </div>
+
 </div>
-
-<!--
-    form with two inputs that are bound to the post model
-
-    ng-submit will execute any expression you pass to it when
-    the form has been submitted. In our case, we want it to
-    execute 'submitPost()'.
--->
-<form ng-submit="submitPost()">
-    <input type="text" ng-model="post.title"/>
-    <input type="text" ng-model="post.url"/>
-    <input type="submit" value="Add Post"/>
-</form>
-

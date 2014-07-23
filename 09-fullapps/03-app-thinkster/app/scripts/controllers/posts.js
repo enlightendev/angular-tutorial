@@ -22,16 +22,6 @@ app.controller('PostsCtrl', function ($scope, $location, Post) {
      */
     $scope.posts = Post.all;
 
-    /**
-     * function called by form submit
-     */
-    $scope.submitPost = function(){
-        //add post
-        Post.create($scope.post).then(function (ref) {
-            $location.path('/posts/' + ref.name());
-        });
-    }
-
     $scope.deletePost = function (postId) {
         Post.delete(postId);
     };
