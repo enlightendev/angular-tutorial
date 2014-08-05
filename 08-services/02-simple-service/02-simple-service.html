@@ -1,0 +1,18 @@
+<!doctype html>
+<html >
+<head>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
+    <script src="../../assets/js/angular.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myController">
+
+    <div ng-repeat="user in users | filter:user">
+        {{user.firstName}} {{user.lastName}} - Age: {{user.age}}
+    </div>
+
+    <button ng-click="changeFirstUsersFirstName()">Change Name</button>
+
+
+<script type="text/javascript" src="app.js"></script>
+</body>
+</html>
