@@ -1,0 +1,36 @@
+<!doctype html>
+<html ng-app="exampleApp">
+<head>
+    <link rel="stylesheet" href="../../../assets/css/bootstrap.css">
+    <script src="../../../assets/js/angular.js"></script>
+    <script src="00-app.js"></script>
+
+</head>
+<!-- This would be an example of a monolithic controller since it is applied to the body element. -->
+<body>
+
+    <div class="well" ng-controller="simpleCtrl">
+        <h4>Billing Zip Code</h4>
+        <div class="form-group">
+            <input class="form-control" ng-model="billingZip">
+        </div>
+        <button class="btn btn-primary" ng-click="setAddress('billingZip', billingZip)">
+            Save Billing
+        </button>
+    </div>
+
+    <div class="well" ng-controller="simpleCtrl">
+        <h4>Shipping Zip Code</h4>
+        <div class="form-group">
+            <input class="form-control" ng-model="shippingZip">
+        </div>
+        <button class="btn btn-primary" ng-click="copyAddress()">
+            Use Billing
+        </button>
+        <button class="btn btn-primary"
+                ng-click="setAddress('shippingZip', shippingZip)">
+            Save Shipping
+        </button>
+    </div>
+</body>
+</html>
