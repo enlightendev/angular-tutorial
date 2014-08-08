@@ -1,0 +1,57 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <script src="./../../assets/js/angular.js"></script>
+
+    <style>
+        .odd { background-color: lightgrey}
+        .even { background-color: lavenderblush}
+    </style>
+
+    <script>
+
+            var app = angular.module("app", []);
+
+            var data = {}
+
+            app.run(function ($http) {
+                $http.get("./../../assets/data/tutorials.json").success(function (responseData) {
+                    data.tutorials = responseData;
+                });
+            });
+
+            app.controller("AppCtrl", function ($scope) {
+
+                $scope.model = data;
+
+            });
+
+    </script>
+</head>
+<body ng-controller="AppCtrl">
+
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <form id="custom-search-form" class="form-search form-horizontal pull-right">
+                    <div class="input-append span12">
+                        <!-- https://docs.angularjs.org/api/ng/filter/filter -->
+                        <input type="text" class="search-query mac-style" placeholder="Search" ng-model="search.$">
+                        <button type="submit" class="btn"><i class="icon-search"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!--
+    The ng-include directive retrieves a fragment of HTML content from the server, compiles it to
+    process any directives that it might contain, and adds it to the Document Object Model.
+    -->
+    <ng-include src="'00-table.html'"></ng-include>
+
+</body>
+</html>

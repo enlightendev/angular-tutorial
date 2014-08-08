@@ -1,0 +1,18 @@
+<table class="table table-condensed">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>name</th>
+        <th>Description</th>
+        <th>Tags</th>
+    </tr>
+    </thead>
+    <tr ng-repeat="tutorial in model.tutorials | filter:search | orderBy:'order'"
+        ng-class="$odd ? 'odd' : 'even'">
+
+        <td>{{$index + 1}}</td>
+        <td><a ng-href="/angular-tutorial{{tutorial.path}}" target="_blank">{{tutorial.name}}</a></td>
+        <td>{{tutorial.description}}</td>
+        <td>{{tutorial.tags}}</td>
+    </tr>
+</table>
