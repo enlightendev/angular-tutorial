@@ -1,0 +1,69 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <script src="./assets/js/angular.js"></script>
+
+    <style>
+        .odd { background-color: lightgrey}
+        .even { background-color: lavenderblush}
+    </style>
+
+    <script>
+
+            var app = angular.module("app", []);
+
+            var data = {}
+
+            app.run(function ($http) {
+                $http.get("./assets/data/tutorials.json").success(function (responseData) {
+                    data.tutorials = responseData;
+                });
+            });
+
+            app.controller("AppCtrl", function ($scope) {
+
+                $scope.model = data;
+
+            });
+
+    </script>
+</head>
+<body ng-controller="AppCtrl">
+
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <form id="custom-search-form" class="form-search form-horizontal pull-right">
+                    <div class="input-append span12">
+                        <!-- https://docs.angularjs.org/api/ng/filter/filter -->
+                        <input type="text" class="search-query mac-style" placeholder="Search" ng-model="search.$">
+                        <button type="submit" class="btn"><i class="icon-search"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-condensed">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>name</th>
+            <th>Description</th>
+            <th>Tags</th>
+        </tr>
+        </thead>
+        <tr ng-repeat="tutorial in model.tutorials | filter:search | orderBy:'order'"
+            ng-class="$odd ? 'odd' : 'even'">
+
+            <td>{{$index + 1}}</td>
+            <td><a ng-href="/angular-tutorial{{tutorial.path}}" target="_blank">{{tutorial.name}}</a></td>
+            <td>{{tutorial.description}}</td>
+            <td>{{tutorial.tags}}</td>
+        </tr>
+    </table>
+
+</body>
+</html>
