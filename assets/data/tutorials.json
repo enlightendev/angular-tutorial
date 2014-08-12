@@ -4,27 +4,34 @@
         "path": "/00-basics/00-basics.html",
         "description": "This shows how to .....",
         "tags": "ng-repeat, ng-include",
-        "order": 10
+        "order": 0
     },
     {
         "name": "Expressions",
         "path": "/00-basics/01-expressions.html",
         "description": "Demonstrates simple angular expressions.",
         "tags": "expressions, math",
-        "order": 20
+        "order": 1
     },
     {
         "name": "MVC Todo List",
         "path": "/00-basics/02-mvc.html",
         "description": "full example using mvc pattern to separate core angular components.",
         "tags": "mvc",
-        "order": 30
+        "order": 2
     },
     {
         "name": "Two way binding",
         "path": "/00-basics/03-2way-binding.html",
         "description": "2 way binding.",
         "tags": "binding",
-        "order": 40
+        "order": 3
+    },
+    {
+        "name": "Phonecat Tutorial",
+        "path": "/09-fullapps/01-app-phonecat/index.html",
+        "description": "Phone cat tutorial.",
+        "tags": "binding, Karma, Protractor, services, ngAnimate",
+        "order": 9.1
     }
 ]
