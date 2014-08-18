@@ -36,7 +36,7 @@
 
                 this.todo = model;
 
-                $http.get("../assets/data/items.json").success(function (data) {
+                $http.get("../../assets/data/items.json").success(function (data) {
                     model.items = data;
                 });
 
