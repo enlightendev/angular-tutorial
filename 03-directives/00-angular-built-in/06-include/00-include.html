@@ -1,9 +1,9 @@
 <!doctype html>
 <html ng-app="app">
 <head>
-    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
-    <link rel="stylesheet" href="../../assets/css/main.css">
-    <script src="./../../assets/js/angular.js"></script>
+    <link rel="stylesheet" href="../../../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../assets/css/main.css">
+    <script src="./../../../assets/js/angular.js"></script>
 
     <style>
         .odd { background-color: lightgrey}
@@ -17,7 +17,7 @@
             var data = {}
 
             app.run(function ($http) {
-                $http.get("./../../assets/data/tutorials.json").success(function (responseData) {
+                $http.get("./../../../assets/data/tutorials.json").success(function (responseData) {
                     data.tutorials = responseData;
                 });
             });

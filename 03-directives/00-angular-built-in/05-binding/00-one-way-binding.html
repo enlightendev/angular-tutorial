@@ -2,8 +2,8 @@
 <html ng-app="exampleApp">
 <head>
     <title>Directives</title>
-    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
-    <script src="../../assets/js/angular.js"></script>
+    <link rel="stylesheet" href="../../../assets/css/bootstrap.css">
+    <script src="../../../assets/js/angular.js"></script>
     <script>
         angular.module("exampleApp", [])
                 .controller("defaultCtrl", function ($scope) {
@@ -18,14 +18,23 @@
 </head>
 <body>
 <div id="todoPanel" ng-controller="defaultCtrl">
-    <h3>To Do List - two way binding</h3>
-    <div class="well">
-        <div>The first item is: {{todos[0].action}}</div>
+    <h3>To Do List - one way binding</h3>
+
+    <div>There are {{todos.length}} items</div>
+
+    <div>
+        There are <span ng-bind="todos.length"></span> items
     </div>
 
-    <div class="form-group well">
-        <label for="firstItem">Set First Item:</label>
-        <input name="firstItem" class="form-control" ng-model="todos[0].action" />
+    <!--
+    ng-bind directive is limited to being able to process a single data binding expression.
+    If you need to create multiple data bindings, then you should use the ng-bind-template
+    directive, which is more flexible, as follows:
+    -->
+    <div ng-bind-template="First: {{todos[0].action}}. Second: {{todos[1].action}}"></div>
+
+    <div ng-non-bindable>
+        AngularJS uses {{ and }} characters for templates
     </div>
 </div>
 </body>

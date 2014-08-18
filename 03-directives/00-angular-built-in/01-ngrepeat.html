@@ -1,11 +1,17 @@
 <!doctype html>
 <html ng-app="store">
 <head>
-    <link rel="stylesheet" href="../assets/css/bootstrap.css">
-    <script src="../assets/js/angular.js"></script>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
+    <script src="../../assets/js/angular.js"></script>
 </head>
 <body class="container" ng-controller="StoreController as store">
 
+<div ng-hide="store.product.soldOut" >
+    <h1>{{store.product.name}}</h1>
+    <em class="pull-right">${{store.product.price}}</em>
+    <p>{{store.product.description}}</p>
+    <button ng-show="store.product.canPurchase">Add to cart</button>
+</div>
 
 <table class="table table-condensed">
     <th>
@@ -13,18 +19,12 @@
             <td>fname</td>
             <td>lname</td>
             <td>uname</td>
-            <td>image</td>
         </tr>
     </th>
     <tr ng-repeat="user in store.userList">
         <td>{{user.fname}}</td>
         <td>{{user.lname}}</td>
         <td>{{user.uname}}</td>
-
-        <!-- use ng-src to display images otherwise page will try to load image before expression is evaluated. -->
-        <td>
-            <img class="small-image pull-left thumbnail" ng-src="{{user.image}}"/>
-        </td>
     </tr>
 </table>
 
