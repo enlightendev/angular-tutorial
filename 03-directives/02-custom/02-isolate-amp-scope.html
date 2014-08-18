@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
+    <script src="../../assets/js/angular.js"></script>
+
+    <script>
+        var app = angular.module("phoneApp", []);
+
+        app.controller("AppCtrl", function($scope){
+            $scope.callHome = function(message){
+                alert(message);
+            }
+        });
+
+        app.directive("phone", function(){
+            return {
+                /**
+                 * we are isolating the scope from the parent and defining what scope is bound to.
+                 */
+                scope: {
+                    dial: "&" //means if we invoke dial
+                },
+                template:'<input type="text" ng-model="value">' +
+                        '<div class="btn btn-danger" ng-click="dial({message:value})">Call home!</div>'
+            }
+        })
+    </script>
+    <style>
+        input {
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+<p>https://egghead.io/lessons/angularjs-isolate-scope-expression-binding</p>
+<div ng-app="phoneApp">
+    <div ng-controller="AppCtrl">
+        <div phone dial="callHome(message)"></div>
+        <div phone dial="callHome(message)"></div>
+        <div phone dial="callHome(message)"></div>
+    </div>
+</div>
+
+</body>
+</html>

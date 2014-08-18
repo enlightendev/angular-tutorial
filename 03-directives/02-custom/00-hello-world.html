@@ -1,0 +1,37 @@
+<!doctype html>
+<html ng-app="appMod">
+<head>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
+    <script src="../../assets/js/angular.js"></script>
+
+    <script>
+        var appMod = angular.module("appMod", []);
+
+        /**
+         * Now that our directive has been created, we can use it in any HTML template
+         * that is part of our ng application.
+         */
+        appMod.directive('bbHelloWorld', function(){
+
+            /**
+             * https://docs.angularjs.org/api/ng/service/$compile
+             */
+            var directiveDefinitionObject = {
+                restrict: 'EA',
+                link: function(scope, element, attrs){
+                    element.text('Hello Directive World');
+                }
+            }
+            /**
+             * we return a directive definition object
+             */
+           return directiveDefinitionObject;
+        });
+    </script>
+</head>
+<body>
+
+    <bb-hello-world></bb-hello-world>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
+    <script src="../../assets/js/angular.js"></script>
+
+    <script>
+
+        var app = angular.module("app", []);
+
+        /**
+         *
+         */
+        app.controller("AppCtrl", function($scope, $http){
+            console.log($scope);
+        });
+
+        app.directive("myDirective", function(){
+            return {
+                /**
+                 * if we create its onw scope by declaring it here we can see in console that a
+                 * diff scope with a different id is created
+                 */
+                scope:{}, //comment out to see console output, specifically the id.
+
+                /**
+                 *
+                 * @param $scope the scope availbale for the element you are on
+                 * @param element the element you are on
+                 * @param attrs the attributes inside the directive
+                 */
+                link: function($scope, element, attrs){
+                    console.log(element);
+                }
+            }
+        })
+
+    </script>
+</head>
+<body>
+    <p>https://egghead.io/lessons/angularjs-scope-vs-scope</p>
+    <div ng-app="app">
+        <div ng-controller="AppCtrl">
+            <div my-directive></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
+    <script src="../../assets/js/angular.js"></script>
+
+    <script>
+        var app = angular.module("app", []);
+
+        /**
+         *
+         */
+        app.controller("AppCtrl", function($scope){
+
+        });
+
+        app.directive("drink", function(){
+           return {
+               scope: {
+                   flavor: "@"
+               },
+               template: '<div>{{flavor}}</div>'
+
+               //if we use @ scope as shown above we can omit the following linnk function.
+               /*
+               ,link: function(scope, element, attrs){
+                   //scope.flavor = "cherry"
+                   scope.flavor = attrs.flavor
+               }
+               */
+           }
+        });
+    </script>
+    <style>
+        input {
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+
+<p>https://egghead.io/lessons/angularjs-isolate-scope-attribute-binding</p>
+
+<div ng-app="app">
+    <div ng-controller="AppCtrl">
+        <div drink flavor="strawbizzles"></div>
+        <div drink flavor="peaches"></div>
+    </div>
+</div>
+
+</body>
+</html>

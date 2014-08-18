@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/css/foundation.min.css">
+    <script src="../../assets/js/angular.js"></script>
+
+    <script>
+
+        var app = angular.module("choreApp", []);
+
+        app.controller("ChoreCtrl", function($scope){
+            $scope.logChore = function(chore){
+                alert(chore + ' is done');
+            }
+        });
+
+        app.directive("kid", function(){
+            return {
+                scope: {
+                    done: "&"
+                },
+                restrict: "E",
+                template: '<input type="text" ng-model="chore">' +
+                        '{{chore}}' +
+                        ' <div class="button" ng-click="done({chore:chore})">Done</div>'
+            }
+        })
+    </script>
+    <style>
+        input {
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+
+<p>By adding an isolated scope object to your AngularJS directive you can insure that each
+    element using that directive has its own scope. This prevents it from affecting sibling
+    directives and encapsulates the directive.
+</p>
+<p>https://egghead.io/lessons/angularjs-understanding-isolate-scope</p>
+<p>https://egghead.io/lessons/angularjs-isolate-scope-review</p>
+
+<div ng-app="choreApp" ng-controller="ChoreCtrl">
+    <kid done="logChore(chore)"></kid>
+</div>
+</body>
+</html>
