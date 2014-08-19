@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
+    <script src="../../assets/js/angular.js"></script>
+
+    <script>
+        var appMod = angular.module("appMod", []);
+
+        /**
+         */
+        appMod.directive('country', function(){
+            return {
+                restrict: 'E',
+                controller: function(){
+                    this.makeAnnouncement = function(message){
+                        console.log("Country says: " + message )
+                    }
+                }
+            }
+        });
+
+        appMod.directive('state', function(){
+            return {
+                restrict: 'E',
+                controller: function(){
+                    this.makeLaw = function(law){
+                        console.log("Law:" + law);
+                    }
+                }
+            }
+        });
+
+        appMod.directive('city', function() {
+            return {
+                restrict: 'E',//require: '^country',
+                require: ['^country', '^state'], //we specify this here so we can inject the controller in the link function
+
+                link: function (scope, element, attrs, ctrls) {
+                    ctrls[0].makeAnnouncement("from city");
+                    ctrls[1].makeLaw("jump higher");
+                }
+            }
+        });
+    </script>
+</head>
+<body ng-app="appMod">
+    <country>
+        <state>
+            <city></city>
+        </state>
+    </country>
+
+
+</body>
+</html>
