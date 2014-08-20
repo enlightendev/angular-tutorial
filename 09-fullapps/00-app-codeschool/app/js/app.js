@@ -54,8 +54,8 @@
                     genres: '='
                 }
             }
-        });
-
+        }
+    );
 
     var genres = [ 'fable', 'fantasy', 'fiction', 'folklore', 'horror', 'humor', 'legend', 'metafiction', 'mystery', 'mythology', 'non-fiction', 'poetry' ];
 
