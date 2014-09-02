@@ -37,6 +37,15 @@
         </fieldset>
 
         <fieldset class="form-group">
+            <label for="entry-date" class="control-label col-sm-2">Entry Date:</label>
+        <span class="col-sm-4">
+          <input type="text" id="entry-date" class="form-control"
+                 ng-model="tradeFormCtrl.trade.entry_date"
+                 maxLength="10" placeholder="Entry Date">
+        </span>
+        </fieldset>
+
+        <fieldset class="form-group">
       <span class="col-sm-4 col-sm-offset-2 button-from-hell">
         <button class="btn btn-default btn-xs">Save Trade</button>
       </span>

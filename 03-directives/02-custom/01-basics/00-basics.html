@@ -1,0 +1,74 @@
+<!doctype html>
+<html ng-app="appMod">
+<head>
+    <link rel="stylesheet" href="../../../assets/css/bootstrap.css">
+    <script src="../../../assets/js/angular.js"></script>
+
+    <script>
+        var appMod = angular.module("appMod", [])
+                .controller("mainCtrl", function ($scope) {
+
+                    $scope.trades = [
+                        {ticker: 'msft', category: "stocks", entry: 21.45, longShort: "long"},
+                        {ticker: '@gc', category: "futures", entry: 11.45, longShort: "short"}
+                    ]
+                })
+
+                /**
+                 * The worker function in the directive is called the link function; it provides the
+                 * means to link the directive with the HTML in the document and the data in the scope.
+                 *
+                 * The link function is invoked when AngularJS sets up each instance of the directive
+                 * and receives three arguments: the scope for the view in which the directive has been
+                 * applied, the HTML element that the directive has been applied to, and the attributes
+                 * of that HTML element. The convention is to define the link function with arguments
+                 * called scope, element, and attrs.
+                 *
+                 * GETTING DATA FROM SCOPE
+                 * The first step is to get the data to display from the scope. Unlike AngularJS controllers,
+                 * directives don’t declare a dependency on the $scope service; instead, they are passed the
+                 * scope created by the controller that supports the view in which the directive is applied.
+                 * This is important because it allows a single directive to be applied multiple times in an
+                 * application, where each application may be operating on a different scope in the hierarchy
+                 */
+                .directive("unorderedList", function() {
+                    return function(scope, element, attrs){
+
+                        /**
+                         * AngularJS doesn’t expose the DOM API provided by the browser, and any time you are working
+                         * with elements, you can expect to receive a jqLite object. The jqLite functionality is
+                         * exposed through the element argument that is passed to the link function.
+                         */
+
+                        var data = scope[attrs["unorderedList"]];
+                        if (angular.isArray(data)) {
+
+                            //create a new element and append.
+                            var listElem = angular.element("<ul>");
+                            element.append(listElem);
+
+                            for (var i = 0; i < data.length; i++) {
+                                console.log("Trade: " + data[i].ticker);
+                                listElem.append(angular.element('<li>').text(data[i].ticker));
+                            }
+                        }
+                    }
+                });
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Trades</h3>
+    </div>
+    <div class="panel-body">
+
+        <!--
+         we pass the name of the scope attribute that contains our data and in the directive code we look
+         up the data from the scope of the associated controller.
+        -->
+        <div unordered-list="trades"></div>
+    </div>
+</div>
+</body>
+</html>

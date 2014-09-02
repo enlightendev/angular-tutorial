@@ -1,0 +1,42 @@
+<!doctype html>
+<html ng-app="appMod">
+<head>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
+    <script src="../../assets/js/angular.js"></script>
+
+    <script>
+        var appMod = angular.module("appMod", [])
+                .controller("mainCtrl", function ($scope) {
+
+                })
+
+                .directive("demoDirective", function() {
+
+                    /**
+                     * The element object represents the element to which the directive has been applied.
+                     */
+                    return function(scope, element, attrs){
+                        //var items = element.children();
+                        var items = element.find("li");
+                        for (var i = 0; i < items.length; i++) {
+                            if (items.eq(i).text() == "AAPL") {
+                                items.eq(i).css("font-weight", "bold");
+                            }
+                        }
+                    }
+                });
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+<h3>Trades</h3>
+<ol demo-directive>
+    <li>MSFT</li>
+    <li>AAPL</li>
+    <ul>
+        <li>AAPL</li>
+        <li>MSFT</li>
+    </ul>
+    <li>ORCL</li>
+</ol>
+</body>
+</html>

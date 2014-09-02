@@ -1,0 +1,57 @@
+<!doctype html>
+<html ng-app="appMod">
+<head>
+    <link rel="stylesheet" href="../../../assets/css/bootstrap.css">
+    <script src="../../../assets/js/angular.js"></script>
+
+    <script>
+        var appMod = angular.module("appMod", [])
+                .controller("mainCtrl", function ($scope) {
+
+                    $scope.trades = [
+                        {ticker: 'msft', category: "stocks", entry: 21.45, longShort: "long"},
+                        {ticker: '@gc', category: "futures", entry: 11.45, longShort: "short"}
+                    ]
+                })
+
+                /**
+                 *
+                 */
+                .directive("unorderedList", function() {
+                    return function(scope, element, attrs){
+
+                        var data = scope[attrs["unorderedList"]];
+
+                        var propertyExpression = attrs["listProperty"];
+
+                        if (angular.isArray(data)) {
+
+                            //create a new element and append.
+                            var listElem = angular.element("<ul>");
+                            element.append(listElem);
+
+                            for (var i = 0; i < data.length; i++) {
+                                console.log("Trade: " + scope.$eval(propertyExpression, data[i]));
+                                listElem.append(angular.element('<li>').text(scope.$eval(propertyExpression, data[i])));
+                            }
+                        }
+                    }
+                });
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Trades</h3>
+    </div>
+    <div class="panel-body">
+
+        <!--
+         Additionaly, in order to apply a filter we have the scope evaluate the attribute value as an
+         expression, which is done through the scope.$eval method.
+        -->
+        <div unordered-list="trades" list-property="entry | currency"></div>
+    </div>
+</div>
+</body>
+</html>

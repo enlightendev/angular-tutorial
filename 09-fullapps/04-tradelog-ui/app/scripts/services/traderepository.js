@@ -18,13 +18,21 @@ angular.module('tradeloguiApp')
                 "longShort": 'Long',
                 "ticker": 'MSFT',
                 "comment": 'MSFT rocks',
-                "rating": 4
+                "rating": 4,
+                "entry_date": '04/01/2014',
+                "entry_price": 40,
+                "exit_date": '04/10/2014',
+                "exit_price": 40
             },
             {
                 longShort: 'Short',
                 ticker: 'IBM',
                 comment: 'IBM Stinks!',
-                rating: 3
+                rating: 3,
+                "entry_date": '02/01/2014',
+                "entry_price": 10,
+                "exit_date": '03/10/2014',
+                "exit_price": 20
             }
         ];
 
