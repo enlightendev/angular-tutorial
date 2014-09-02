@@ -1,0 +1,50 @@
+<!doctype html>
+<html ng-app="appMod">
+<head>
+    <link rel="stylesheet" href="../../../../assets/css/bootstrap.css">
+    <script src="../../../../assets/js/angular.js"></script>
+
+    <script>
+        var appMod = angular.module("appMod", [])
+                .controller("mainCtrl", function ($scope) {
+
+                    $scope.trades = [
+                        {ticker: 'msft', category: "stocks", entry: 21.45, longShort: "long"},
+                        {ticker: '@gc', category: "futures", entry: 11.45, longShort: "short"}
+                    ]
+                })
+
+                .directive("unorderedList", function() {
+
+                    return {
+
+                        link: function(scope, element, attrs){
+                            scope.data = scope[attrs["unorderedList"]];
+                        },
+
+                        restrict: "A",
+
+                        /**
+                         * Instead of generating html using jqLite we use a template - way easier!
+                         */
+                        template: "<ul><li ng-repeat='item in data'>{{item.entry | currency}}</li></ul>"
+                    }
+                });
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Trades</h3>
+    </div>
+    <div class="panel-body">
+
+        <!--
+         we pass the name of the scope attribute that contains our data and in the directive code we look
+         up the data from the scope of the associated controller.
+        -->
+        <div unordered-list="trades"></div>
+    </div>
+</div>
+</body>
+</html>

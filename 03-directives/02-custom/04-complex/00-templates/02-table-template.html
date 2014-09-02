@@ -1,0 +1,12 @@
+<table>
+    <thead>
+    <tr><th>Ticker</th><th>Category</th><th>Entry</th></tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in data">
+        <td>{{item.ticker}}</td>
+        <td>{{item.category}}</td>
+        <td>{{item.entry | currency}}</td>
+    </tr>
+    </tbody>
+</table>
