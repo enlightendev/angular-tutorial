@@ -1,8 +1,8 @@
 <!doctype html>
 <html ng-app="todoApp">
 <head>
-    <link rel="stylesheet" href="../assets/css/bootstrap.css">
-    <script src="../assets/js/angular.js"></script>
+    <link rel="stylesheet" href="../../../assets/css/bootstrap.css">
+    <script src="../../../assets/js/angular.js"></script>
 
     <script>
 
@@ -57,6 +57,34 @@
                 }
 
             });
+
+            /**
+             * this will create a directive referenced as <todo-header></todo-header>
+             * NOTE: this directive also uses its own controller.
+             */
+            todoApp.directive('todoHeader', function(){
+                /**
+                 * we return a directive definition object - a configuration object
+                 * defining how the directive works
+                 */
+               return {
+                   restrict: 'E',                       //the type of directive (E for element)
+                   templateUrl: '04-header-element-directive.html',   //URL of a template
+
+                   /**
+                    * specify a controller for this directive.
+                    */
+                   controller: function(){
+                        this.myname = 'Superman'
+                   },
+
+                   /**
+                    * controller alias
+                    */
+                   controllerAs: 'headerCtrl'
+               };
+
+            });
         })();
 
     </script>
@@ -65,15 +93,11 @@
 <body class="container" ng-controller="ToDoCtrl as todoCntrl">
 
     <div>
-        <p>This example is taken from 00-basics/02-mvc. It is altered to use ng-include to display a template.</p>
-        <ul>
-            <li></li>
-            <li> </li>
-        </ul>
+        <p>This example builds on the previous ones by adding a controller to the actual directive.</p>
     </div>
 
-    <!-- Using ng-include to move code into separate template. -->
-    <div class="page-header" ng-include="'00_header.html'"></div>
+    <!-- Our custom directive -->
+    <todo-header></todo-header>
 
     <div class="panel">
         <div class="input-group">

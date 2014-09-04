@@ -1,8 +1,8 @@
 <!doctype html>
 <html ng-app="todoApp">
 <head>
-    <link rel="stylesheet" href="../assets/css/bootstrap.css">
-    <script src="../assets/js/angular.js"></script>
+    <link rel="stylesheet" href="../../../assets/css/bootstrap.css">
+    <script src="../../../assets/js/angular.js"></script>
 
     <script>
 
@@ -59,30 +59,18 @@
             });
 
             /**
-             * this will create a directive referenced as <todo-header></todo-header>
-             * NOTE: this directive also uses its own controller.
+             * this will create a directive referenced as <h1 todo-header></h1>
+             *
              */
             todoApp.directive('todoHeader', function(){
                 /**
                  * we return a directive definition object - a configuration object
                  * defining how the directive works
                  */
-               return {
-                   restrict: 'E',                       //the type of directive (E for element)
-                   templateUrl: '03__header-element-directive.html',   //URL of a template
-
-                   /**
-                    * specify a controller for this directive.
-                    */
-                   controller: function(){
-                        this.myname = 'Superman'
-                   },
-
-                   /**
-                    * controller alias
-                    */
-                   controllerAs: 'headerCtrl'
-               };
+                return {
+                    restrict: 'A',                       //the type of directive (A for attribute)
+                    templateUrl: '03-header-attribute-directive.html'   //URL of a template
+                };
 
             });
         })();
@@ -93,11 +81,13 @@
 <body class="container" ng-controller="ToDoCtrl as todoCntrl">
 
     <div>
-        <p>This example builds on the previous ones by adding a controller to the actual directive.</p>
+        <p>This example takes the previous one a bit further to create a custom attribute directive.
+        </p>
     </div>
 
-    <!-- Our custom directive -->
-    <todo-header></todo-header>
+    <div class="page-header">
+        <h1 todo-header></h1>
+    </div>
 
     <div class="panel">
         <div class="input-group">

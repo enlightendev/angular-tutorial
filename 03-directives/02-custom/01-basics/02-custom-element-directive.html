@@ -1,8 +1,8 @@
 <!doctype html>
 <html ng-app="todoApp">
 <head>
-    <link rel="stylesheet" href="../assets/css/bootstrap.css">
-    <script src="../assets/js/angular.js"></script>
+    <link rel="stylesheet" href="../../../assets/css/bootstrap.css">
+    <script src="../../../assets/js/angular.js"></script>
 
     <script>
 
@@ -59,7 +59,7 @@
             });
 
             /**
-             * this will create a directive referenced as <h1 todo-header></h1>
+             * this will create a directive referenced as <todo-header></todo-header>
              *
              */
             todoApp.directive('todoHeader', function(){
@@ -67,10 +67,10 @@
                  * we return a directive definition object - a configuration object
                  * defining how the directive works
                  */
-                return {
-                    restrict: 'A',                       //the type of directive (A for attribute)
-                    templateUrl: '02__header-attribute-directive.html'   //URL of a template
-                };
+               return {
+                   restrict: 'E',                       //the type of directive (E for element)
+                   templateUrl: '02-header-element-directive.html'   //URL of a template
+               };
 
             });
         })();
@@ -81,13 +81,31 @@
 <body class="container" ng-controller="ToDoCtrl as todoCntrl">
 
     <div>
-        <p>This example takes the previous one a bit further to create a custom attribute directive.
+        <p>This example is taken from 00-basics/02-mvc. It is altered to use a custom directive.
+            Directives allow you to write HTML that expresses behavior of your application.
+        </p>
+        <p><b>Types of directives:</b></p>
+        <ul>
+            <li>Template-expanding:
+                define a custom tag or attribute that is expanded or replaced.<br/>
+                Can include controller logic. <br/>
+                Simplest.
+            </li>
+            <li>Directives can also be used for: <br/>
+                Expressing complex UI (e.g. this example)<br/>
+                Calling events and registering event handlers.<br/>
+                Reusing common components.
+            </li>
+        </ul>
+        <p>
+            <b>Attribute vs Element Directives:</b> <br/>
+            &lt;h3 product-title&gt;&lt;/h3&gt; vs &lt;todo-header&gt;&lt;/todo-header&gt; <br/>
+            <i>Use element directives for UI widgets and attribute directives for mixin behaviors, e.g. tooltip</i>
         </p>
     </div>
 
-    <div class="page-header">
-        <h1 todo-header></h1>
-    </div>
+    <!-- Our custom directive -->
+    <todo-header></todo-header>
 
     <div class="panel">
         <div class="input-group">
