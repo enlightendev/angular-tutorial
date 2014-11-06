@@ -20,6 +20,9 @@
                 .directive("unorderedList", function() {
                     return function(scope, element, attrs){
 
+                        /**
+                         * we get the data from the scope that encloses this directive.
+                         */
                         var data = scope[attrs["unorderedList"]];
 
                         var propertyExpression = attrs["listProperty"];

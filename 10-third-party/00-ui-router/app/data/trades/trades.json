@@ -1,0 +1,10 @@
+[
+  {
+    "ticker": "IBM",
+    "type": "buy-to-open"
+  },
+  {
+    "ticker": "MSFT",
+    "type": "buy-to-close"
+  }
+]
