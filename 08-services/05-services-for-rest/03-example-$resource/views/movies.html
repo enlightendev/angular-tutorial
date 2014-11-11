@@ -1,0 +1,25 @@
+<!--
+
+- button Add New Movie which changes the state to newMovie. As a result a new route loads and we can create a new movie entry.
+
+- For each movie there are two buttons, View and Delete.
+    View triggers a state transition so that the details for the movie are displayed.
+    Delete button deletes the movie permanently.
+
+-
+-->
+<a ui-sref="newMovie" class="btn-primary btn-lg nodecoration">Add New Movie</a>
+
+<table class="table movietable">
+    <tr>
+        <td><h3>All Movies</h3></td>
+        <td></td>
+    </tr>
+    <tr ng-repeat="movie in movies">
+        <td>{{movie.title}}</td>
+        <td>
+            <a class="btn btn-primary" ui-sref="viewMovie({id:movie._id})">View</a>
+            <a class="btn btn-danger"  ng-click="deleteMovie(movie)">Delete</a>
+        </td>
+    </tr>
+</table>
