@@ -23,5 +23,31 @@ Finally, services can be used to provide business logic to your application. You
 complex form validation or a state machine to handle user workflow for a long-running business process. Maybe you need 
 a complex compute engine that calculates tax and shipping charges for a shopping cart.
 
+## services, factories, providers
+
+a service is a single instance of an object, function, or value that you can leverage across the various components of
+your application. When you inject a service into an application, the $inject service first looks to check if an
+instance of the service already exists. If it does, the $inject service returns the existing instance. If it does not,
+the $inject service creates a new instance of the service and returns it.
+
+There are one of five different module-definition methods used to create services. The first two are best for static values,
+configuration values, and models and the rest are best for defining services based on how they are constructed or used.
+
+## creating your own
+a factory is written to return a single object, array, or function that can then be passed as a parameter to any other
+function or controller, across the entire application.
+
+
+
+## REFERENCE
+
+https://docs.angularjs.org/guide/services
+
+
+
+
+
+
+
 
 
