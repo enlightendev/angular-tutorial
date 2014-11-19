@@ -1,0 +1,20 @@
+{
+  "name": "01-ui-grid",
+  "version": "0.0.0",
+  "homepage": "https://github.com/enlightendev/angular-tutorial",
+  "authors": [
+    "enlightendev <juan.lamadrid@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-grid": "~3.0.0-rc.16"
+  }
+}

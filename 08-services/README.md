@@ -43,6 +43,8 @@ function or controller, across the entire application.
 
 https://docs.angularjs.org/guide/services
 
+http://my.safaribooksonline.com/9781783285617/ch04s05_html
+
 
 
 
