@@ -41,6 +41,8 @@ function or controller, across the entire application.
 
 ## REFERENCE
 
+https://www.youtube.com/watch?v=4ovXYLGFtc4&index=3&list=PLrOyJq2oDA6Gi-YCsi0-4xzlZt0V_Vpsb
+https://www.youtube.com/watch?v=A6cJasNBkyI&index=3&list=PLrOyJq2oDA6Gi-YCsi0-4xzlZt0V_Vpsb
 https://docs.angularjs.org/guide/services
 
 
