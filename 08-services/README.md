@@ -45,6 +45,8 @@ https://www.youtube.com/watch?v=4ovXYLGFtc4&index=3&list=PLrOyJq2oDA6Gi-YCsi0-4x
 https://www.youtube.com/watch?v=A6cJasNBkyI&index=3&list=PLrOyJq2oDA6Gi-YCsi0-4xzlZt0V_Vpsb
 https://docs.angularjs.org/guide/services
 
+http://my.safaribooksonline.com/9781783285617/ch04s05_html
+
 
 
 
