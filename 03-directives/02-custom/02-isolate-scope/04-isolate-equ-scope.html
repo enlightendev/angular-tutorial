@@ -1,10 +1,24 @@
 <!doctype html>
-<html ng-app="demoApp">
+<html ng-app="drinkApp">
 <head>
     <link rel="stylesheet" href="../../../assets/css/bootstrap.css">
     <script src="../../../assets/js/angular.js"></script>
 
     <script>
+        var app = angular.module("drinkApp", []);
+
+        app.controller("AppCtrl", function ($scope) {
+            $scope.ctrlFlavor = "blackberry"
+        })
+
+        app.directive("drink", function () {
+            return {
+                scope: {
+                    flavor: "="
+                },
+                template: '<input type="text" ng-model="flavor">'
+            }
+        })
     </script>
     <style>
         input {
@@ -13,8 +27,16 @@
     </style>
 </head>
 <body>
+    <div ng-app="drinkApp">
+        <div ng-controller="AppCtrl">
+            Ctrl
+            <br/>
+            <input type="text" ng-model="ctrlFlavor">
 
-<p>Coming soon</p>
-
+            <br/>
+            Dir
+            <div drink flavor="ctrlFlavor"></div>
+        </div>
+    </div>
 </body>
 </html>
