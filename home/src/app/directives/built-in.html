@@ -1,0 +1,48 @@
+<div class="jumbotron">
+  <div class="container-fluid">
+    <h2 class="animated" id="title">Angular built in directives</h2>
+    <p><a href="https://docs.angularjs.org/api/ng/directive">Angular Directives</a></p>
+  </div>
+</div>
+
+<div class="container-fluid">
+
+  <!-- ng-disabled -->
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading"><b>ng-disabled</b></div>
+        <div class="panel-body">
+          <p>button is enabled once you add text in text box.</p>
+
+          <!-- creates a binding -->
+          <input type="text"
+                 ng-model="someProperty"
+                 placeholder="Type to enable">
+
+          <!-- -->
+          <button id="btn"
+                  ng-disabled="!someProperty"
+                  ng-click="btnClick()">
+            A button
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading"><b>ng-disabled using time out</b></div>
+        <div class="panel-body">
+          <p>Here we bind to a scope property "isDisabled" that is enabled after 5 seconds.</p>
+          <textarea ng-disabled="isDisabled">Wait 5 seconds</textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Basics",
+        "path": "controllers-scope",
+        "description": "Controller scope ....",
+        "tags": "controllers, scope",
+        "order": 0
+    },
+    {
+        "name": "Directives",
+        "path": "directives-builtin",
+        "description": "Simple built in angular directives..",
+        "tags": "directives, builtin",
+        "order": 1
+    }
+]

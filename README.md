@@ -25,3 +25,12 @@
 
 ## TUTORIALS
 https://thinkster.io/angulartutorial/a-better-way-to-learn-angularjs/
+
+
+
+## TODO
+- codeschool angular email
+- angular meteor - http://angularjs.meteor.com/tutorial/step_00
+- http://www.reactivemanifesto.org/
+- https://thinkster.io/egghead/providers
+- ui-router - https://github.com/angular-ui/ui-router/wiki/Nested-States-%26-Nested-Views

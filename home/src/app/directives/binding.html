@@ -1,0 +1,30 @@
+<div class="jumbotron">
+  <div class="container-fluid">
+    <h2>Directive Binding</h2>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">Binding parameters To directive</div>
+        <div class="panel-body">
+
+          <p>Anything typed in "their url field" is bound as "ng-model="theirUrl".</p>
+          <p>This is passed to directive where an isolate scope is created.</p>
+          <p>And then used in the template of the directive.</p>
+          <label>Their URL field:</label>
+
+          <input type="text" ng-model="theirUrl">
+
+          <div test-directive
+               some-attr="theirUrl"
+               my-link-text="{{theirUrl}}">
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

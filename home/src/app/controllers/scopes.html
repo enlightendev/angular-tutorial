@@ -1,0 +1,46 @@
+<div class="jumbotron">
+    <div class="container-fluid">
+        <h2>Scopes</h2>
+        <p>This example shows how various properties (root, parent, child) are created and accessible via a contoller hierarchy.</p>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Root Scope</div>
+                <div class="panel-body">
+                    <p>Here is the rootProperty: {{rootProperty}}</p>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Parent Scope</div>
+                        <div class="panel-body">
+                            <p>In parent scope: we can access root property: {{rootProperty}}</p>
+
+                            <p>In parent scope: We can access parent property: {{parentProperty}}</p>
+
+                            <div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Child Scope: notice how child has access to all parent
+                                        scopes.
+                                    </div>
+                                    <div class="panel-body">
+                                        <p>In child scope: we can access root property: {{rootProperty}}</p>
+
+                                        <p>In child scope: We can access parent property: {{parentProperty}}</p>
+
+                                        <p>In child scope: We can access child property: {{childProperty}}</p>
+
+                                        <p>{{fullSentenceFromChild}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
