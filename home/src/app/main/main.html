@@ -1,0 +1,49 @@
+
+<div class="jumbotron">
+  <div class="container-fluid">
+    <h2>About</h2>
+    <p>
+      This tutorial was put together to facilitate discussions on various angular topics. It is a work in progress.
+    </p>
+    <p>
+      Topics are reflected in the navigation menu.
+    </p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <form id="custom-search-form" class="form-search form-horizontal pull-right">
+        <div class="input-append span12">
+          <!-- https://docs.angularjs.org/api/ng/filter/filter -->
+          <input type="text" class="search-query mac-style" placeholder="Search" ng-model="search.$">
+          <button type="submit" class="btn"><i class="icon-search"></i></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<table class="table table-condensed">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>name</th>
+    <th>Description</th>
+    <th>Tags</th>
+  </tr>
+  </thead>
+  <tr ng-repeat="tutorial in tutorials | filter:search | orderBy:'order'"
+      ng-class="$odd ? 'odd' : 'even'">
+
+    <td>{{$index + 1}}</td>
+    <td>
+      <a ng-href="#/{{tutorial.path}}">{{tutorial.name}}</a>
+    </td>
+    <td>{{tutorial.description}}</td>
+    <td>{{tutorial.tags}}</td>
+  </tr>
+</table>
+
+
