@@ -1,0 +1,29 @@
+<div class="container">
+
+  <div class="row">
+    <div class="span12">
+      <form id="custom-search-form" class="form-search form-horizontal pull-right">
+        <div class="input-append span12">
+          <!-- https://docs.angularjs.org/api/ng/filter/filter -->
+          <input type="text" class="search-query mac-style" placeholder="Search" ng-model="search.$">
+          <button type="submit" class="btn"><i class="icon-search"></i></button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-10 col-md-6" ng-repeat="code in codedb | filter:search">
+      <div class="thumbnail">
+        <div class="caption">
+          <h3>{{code.title}}</h3>
+          <p>{{code.description}}</p>
+          <p>{{code.tags}}</p>
+          <p>reference<a ng-href="{{code.reference}}">{{code.reference}}</a></p>
+          <p>reopo<a ng-href="{{code.source}}">{{code.source}}</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
